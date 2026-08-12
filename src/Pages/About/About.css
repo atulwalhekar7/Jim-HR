@@ -1,0 +1,154 @@
+.about-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 5rem;
+}
+
+.about-kicker {
+  display: inline-block;
+  color: #ff7e4c;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.about-hero {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 3.5rem;
+}
+
+.about-hero h1 {
+  font-size: 2.2rem;
+  color: #2b211c;
+  margin-bottom: 1rem;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease 0.08s, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.08s;
+}
+
+.about-hero p {
+  color: #6b5f58;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease 0.16s, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.16s;
+}
+
+.about-page.is-visible .about-kicker,
+.about-page.is-visible .about-hero h1,
+.about-page.is-visible .about-hero p {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about-story h2 {
+  color: #2b211c;
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+  position: relative;
+  display: inline-block;
+}
+
+.about-story h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  height: 3px;
+  width: 0;
+  background: #ff7e4c;
+  border-radius: 2px;
+  transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+}
+
+.about-page.is-visible .about-story h2::after {
+  width: 48px;
+}
+
+.about-story p {
+  color: #6b5f58;
+  line-height: 1.7;
+  font-size: 1rem;
+  max-width: 800px;
+}
+
+.about-values {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.value-card {
+  position: relative;
+  background: #fff4ee;
+  border: 1px solid #ffe3d4;
+  border-radius: 10px;
+  padding: 1.75rem;
+  transform-style: preserve-3d;
+  will-change: transform;
+  opacity: 0;
+  translate: 0 24px;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), translate 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.25s ease, border-color 0.25s ease, transform 0.15s ease-out;
+}
+
+.about-page.is-visible .value-card {
+  opacity: 1;
+  translate: 0 0;
+}
+
+.value-card:hover {
+  border-color: #ff7e4c;
+  box-shadow: 0 18px 32px rgba(255, 126, 76, 0.16);
+}
+
+.value-index {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #ffd9c4;
+  margin-bottom: 0.5rem;
+  transition: color 0.25s ease;
+}
+
+.value-card:hover .value-index {
+  color: #ff7e4c;
+}
+
+.value-card h3 {
+  color: #ff7e4c;
+  font-size: 1.1rem;
+  margin-bottom: 0.6rem;
+}
+
+.value-card p {
+  color: #6b5f58;
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 800px) {
+  .about-values {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-kicker,
+  .about-hero h1,
+  .about-hero p,
+  .about-story h2::after,
+  .value-card {
+    transition: opacity 0.3s ease;
+    transform: none !important;
+    translate: 0 !important;
+  }
+}
