@@ -1,18 +1,23 @@
 import { useEffect, useRef, useState } from "react";
 import "./About.css";
+import img from "../../assets/Roli-Agarwal.jpeg";
 
-const values = [
+const deliverables = [
   {
-    title: "People First",
-    text: "Every recommendation we make puts the wellbeing of employers and employees on equal footing.",
+    title: "HR Advisory & Compliance",
+    text: "Straight-talking guidance on the Fair Work Act, modern awards, policies, contracts, and day-to-day employment questions.",
   },
   {
-    title: "Practical Advice",
-    text: "No jargon, no fence-sitting — just clear guidance you can act on the same day.",
+    title: "Work Health & Safety",
+    text: "Practical, workable WHS systems that keep your team safe and your business compliant.",
   },
   {
-    title: "Fair Process",
-    text: "We help you handle workplace issues the right way, protecting both compliance and trust.",
+    title: "Onboarding & Performance",
+    text: "Structured support that helps new hires settle in fast and existing team members keep growing.",
+  },
+  {
+    title: "Employee Relations & Investigations",
+    text: "Sensitive workplace issues handled fairly, confidentially, and with a clear process from start to finish.",
   },
 ];
 
@@ -36,56 +41,74 @@ const About = () => {
     return () => observer.disconnect();
   }, []);
 
-  const handleTilt = (e: React.MouseEvent<HTMLDivElement>) => {
-    const card = e.currentTarget;
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-    const rotateX = (-y / rect.height) * 8;
-    const rotateY = (x / rect.width) * 8;
-    card.style.transform = `perspective(700px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
-  };
-
-  const resetTilt = (e: React.MouseEvent<HTMLDivElement>) => {
-    e.currentTarget.style.transform = "";
-  };
-
   return (
     <section className={`about-page ${visible ? "is-visible" : ""}`} id="about" ref={rootRef}>
-      <div className="about-hero">
-        <span className="about-kicker">Who We Are</span>
-        <h1>About Us</h1>
-        <p>
-          HR Bridge was founded to make expert HR support accessible to
-          businesses of every size — without the jargon, delays, or
-          eye-watering retainer fees.
+      {/* ---------------- page title (eyebrow + heading + subtitle) ---------------- */}
+      <div className="about-heading">
+        <span className="about-heading-eyebrow">Who We Are</span>
+        <h1 className="about-heading-title">About Us</h1>
+        <p className="about-heading-subtitle">
+          Get to know the team turning HR from a headache into a genuine
+          advantage for growing Australian businesses.
         </p>
       </div>
 
-      <div className="about-body">
-        <div className="about-story">
-          <h2>Our Story</h2>
-          <p>
-            We started HR Bridge after seeing too many small and mid-sized
-            employers struggle to get timely, affordable HR advice — and too
-            many employees left unsure of their rights at work. Today we work
-            with businesses across Australia on everything from day-to-day
-            HR questions to complex workplace disputes.
-          </p>
+      {/* ---------------- compact hero: single image + content ---------------- */}
+      <div className="about-hero-split">
+        <div className="hero-image-wrap">
+          <div className="hero-image-glow" aria-hidden="true" />
+          <img
+            className="hero-image"
+            src={img}
+            alt="Roli Aggarwal, Founder and Director of HR Bridge"
+            loading="lazy"
+          />
+          <div className="hero-image-badge">
+            <strong>10+</strong>
+            <span>Years of HR expertise</span>
+          </div>
         </div>
 
-        <div className="about-values">
-          {values.map((value, i) => (
-            <div
-              className="value-card"
-              key={value.title}
-              style={{ transitionDelay: `${i * 120}ms` }}
-              onMouseMove={handleTilt}
-              onMouseLeave={resetTilt}
-            >
-              <span className="value-index">{String(i + 1).padStart(2, "0")}</span>
-              <h3>{value.title}</h3>
-              <p>{value.text}</p>
+        <div className="about-hero-content">
+          <h2>Your Strategic HR Department — Without the Overhead</h2>
+          <p>
+            Founded in Perth, HR Bridge gives small and mid-sized Australian
+            businesses expert, embedded HR support — so compliance, people,
+            and process stop competing for your attention.
+          </p>
+
+          <ul className="about-hero-stats">
+            <li><strong>SME-first</strong><span>Built for growing teams</span></li>
+            <li><strong>Full lifecycle</strong><span>Hire to offboard</span></li>
+            <li><strong>Fair Work ready</strong><span>Always compliant</span></li>
+          </ul>
+
+          <div className="hero-founder-intro">
+            <div className="hero-founder-avatar" aria-hidden="true">RA</div>
+            <div className="hero-founder-text">
+              <strong>Roli Aggarwal</strong>
+              <span>Founder &amp; Director</span>
+              <p>
+                With over a decade of HR experience specializing in
+                recruitment, Fair Work Act compliance, and workplace health
+                and safety, Roli leads HR Bridge in delivering expert,
+                tailored solutions across healthcare, hospitality,
+                construction, agriculture, and more.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ---------------- what we deliver (capsule row) ---------------- */}
+      <div className="about-section">
+        <span className="about-kicker">What We Deliver</span>
+        <h2 className="about-section-title">End-to-end HR support</h2>
+        <div className="capsule-row">
+          {deliverables.map((item, i) => (
+            <div className="capsule" key={item.title} title={item.text}>
+              <span className="capsule-index">{String(i + 1).padStart(2, "0")}</span>
+              <span className="capsule-title">{item.title}</span>
             </div>
           ))}
         </div>

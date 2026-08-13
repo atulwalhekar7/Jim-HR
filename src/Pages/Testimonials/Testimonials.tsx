@@ -97,13 +97,6 @@ const testimonials: Testimonial[] = [
   },
 ];
 
-/* split into rows for the horizontal wall-of-love marquee */
-const rows = [
-  testimonials.filter((_, i) => i % 3 === 0),
-  testimonials.filter((_, i) => i % 3 === 1),
-  testimonials.filter((_, i) => i % 3 === 2),
-];
-
 const Stars = () => (
   <div className="testimonial-stars" aria-hidden="true">
     {Array.from({ length: 5 }).map((_, i) => (
@@ -146,30 +139,25 @@ const Testimonials = () => {
       </div>
 
       <div className="testimonials-wall">
-        {rows.map((row, rowIndex) => (
-          <div
-            className={`testimonials-row ${rowIndex % 2 === 1 ? "testimonials-row--reverse" : ""}`}
-            key={rowIndex}
-          >
-            <div className="testimonials-row__track">
-              {[...row, ...row].map((t, i) => (
-                <div className="testimonial-card" key={`${t.name}-${i}`}>
-                  <Stars />
-                  <p className="testimonial-quote">{t.quote}</p>
-                  <div className="testimonial-author">
-                    <span className="testimonial-avatar">{t.name.charAt(0)}</span>
-                    <div>
-                      <span className="testimonial-name">{t.name}</span>
-                      <span className="testimonial-role">
-                        {t.role} · {t.company}
-                      </span>
-                    </div>
+        <div className="testimonials-row">
+          <div className="testimonials-row__track">
+            {[...testimonials, ...testimonials].map((t, i) => (
+              <div className="testimonial-card" key={`${t.name}-${i}`}>
+                <Stars />
+                <p className="testimonial-quote">{t.quote}</p>
+                <div className="testimonial-author">
+                  <span className="testimonial-avatar">{t.name.charAt(0)}</span>
+                  <div>
+                    <span className="testimonial-name">{t.name}</span>
+                    <span className="testimonial-role">
+                      {t.role} · {t.company}
+                    </span>
                   </div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
         <div className="testimonials-wall__fade testimonials-wall__fade--left" aria-hidden="true" />
         <div className="testimonials-wall__fade testimonials-wall__fade--right" aria-hidden="true" />
       </div>

@@ -67,13 +67,10 @@
   transform: translateY(0);
 }
 
-/* ---------------- wall of love (horizontal) ---------------- */
+/* ---------------- wall of love (single horizontal row) ---------------- */
 
 .testimonials-wall {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
   overflow: hidden;
   opacity: 0;
   transition: opacity 0.8s ease 0.2s;
@@ -110,19 +107,7 @@
   display: flex;
   gap: 1.25rem;
   width: max-content;
-  animation: scroll-left 42s linear infinite;
-}
-
-.testimonials-row:nth-child(2) .testimonials-row__track {
-  animation-duration: 50s;
-}
-
-.testimonials-row:nth-child(3) .testimonials-row__track {
-  animation-duration: 36s;
-}
-
-.testimonials-row--reverse .testimonials-row__track {
-  animation-name: scroll-right;
+  animation: scroll-left 80s linear infinite;
 }
 
 .testimonials-row:hover .testimonials-row__track {
@@ -222,19 +207,11 @@
   to { transform: translateX(-50%); }
 }
 
-@keyframes scroll-right {
-  from { transform: translateX(-50%); }
-  to { transform: translateX(0); }
-}
-
 /* ---------------- responsive ---------------- */
 
 @media (max-width: 900px) {
   .testimonial-card {
     width: 280px;
-  }
-  .testimonials-row:nth-child(3) {
-    display: none;
   }
 }
 
@@ -242,9 +219,6 @@
   .testimonial-card {
     width: 240px;
     padding: 1.25rem;
-  }
-  .testimonials-row:nth-child(2) {
-    display: none;
   }
   .testimonials-wall__fade {
     width: 60px;
