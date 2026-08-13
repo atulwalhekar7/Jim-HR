@@ -16,7 +16,7 @@ interface Slide {
 const slides: Slide[] = [
   {
     eyebrow: "For Employers",
-    title: "HR Support That Puts People First",
+    title: "Helping Businesses Build Better Workplaces",
     text: "From contracts to compliance, we help your business build a workplace people actually want to stay in.",
     ctaLabel: "Explore Employer Services",
     ctaTo: "services",
@@ -24,7 +24,7 @@ const slides: Slide[] = [
   },
   {
     eyebrow: "For Employees",
-    title: "Know Your Rights, Get Real Answers",
+    title: "Your Trusted HR Partner Jim's HR Consultancy",
     text: "Confused about pay, entitlements, or a workplace issue? Talk to someone who can actually explain it.",
     ctaLabel: "Get in Touch",
     ctaTo: "contact",
@@ -32,7 +32,7 @@ const slides: Slide[] = [
   },
   {
     eyebrow: "Trusted Across Australia",
-    title: "Practical Advice, No Jargon",
+    title: "Workpace Success Starts Here",
     text: "Hundreds of businesses and employees rely on us for fast, clear HR guidance they can act on.",
     ctaLabel: "Read Testimonials",
     ctaTo: "testimonials",
