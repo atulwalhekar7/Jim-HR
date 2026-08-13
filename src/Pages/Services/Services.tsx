@@ -1,11 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import "./Services.css";
 
 interface ServiceItem {
   label: string;
   description: string;
   url: string;
-  icon: JSX.Element;
+  icon: ReactNode;
 }
 
 /* Category data as shown in the "Our Services" section on the HR Bridge
